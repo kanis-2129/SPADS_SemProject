@@ -50,7 +50,7 @@ const UploadModal = ({ activeClass, onClose, displayYear }) => {
           range: headerRowIndex,
         });
         const cleanedData = jsonData.filter((row) => {
-          const regValue = row["Reg. No"] || row["Reg No"] || row["Reg.no"];
+          const regValue = row["Reg. No"] || row["Reg No"] || row["Reg.no"] || row["Reg.No"];
           return (
             regValue &&
             !["th", "pr", "tot", "total"].includes(
