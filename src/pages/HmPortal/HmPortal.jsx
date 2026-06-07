@@ -6,10 +6,9 @@ import { useNavigate, useLocation } from "react-router-dom";
 import DashboardFilter from "../HmPortal/hmPortalFilter";
 import HMSidebar from "./components/hmSideBar";
 import {
-  
   ExamTrendChart,
   PassFailDonut,
-   SchoolYearlyTrendChart,
+  SchoolYearlyTrendChart,
 } from "./components/HmCharts";
 import {
   Users,
@@ -31,8 +30,8 @@ import {
 
 // --- NEW COMPONENT FOR YEARLY TREND ---
 
-
 const HMDashboard = () => {
+  console.log("HM Dashboard Rendered")
   const navigate = useNavigate();
   const location = useLocation();
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -92,7 +91,14 @@ const HMDashboard = () => {
 
   const extractSectionFromData = (d) => {
     if (d.section) return d.section;
-    const regNo = d["Reg.no"] || d.RegNo || d.regNo;
+    const regNo =
+      d["Reg.no"] ||
+      d.RegNo ||
+      d.regNo ||
+      d.uid ||
+      d["Reg No"] ||
+      d["Reg.No"] ||
+      d["Reg.no"];
     const m = String(regNo || "").match(/10([A-Z])/);
     return m ? m[1] : null;
   };
@@ -218,7 +224,7 @@ const HMDashboard = () => {
   }, [allStudents, filters]);
 
   const analytics = useMemo(() => {
-    const subjects = ["Tamil", "English", "Maths", "Science", "Social"];
+    const subjects = ["Tamil", "English", "Maths", "Science", "Social Science"];
     const studentMap = new Map();
     const yearlyGroups = {};
 
@@ -269,7 +275,13 @@ const HMDashboard = () => {
 
     // 2. Process Filtered Data
     filteredData.forEach((row) => {
-      const key = row.RegNo || row.regNo || row["Reg.no"] || row.uid;
+      const key =
+  row.RegNo ||
+  row.regNo ||
+  row["Reg.no"] ||
+  row["Reg No"] ||
+  row["Reg.No"] ||
+  `${row.Name || row.name || row.StudentName}-${row.className}-${row.section || extractSectionFromData(row)}`;
       if (!studentMap.has(key)) {
         studentMap.set(key, {
           totalMarks: 0,
@@ -340,6 +352,15 @@ const HMDashboard = () => {
           examGroups[key].count++;
         }
       });
+      console.log(
+        "Students:",
+        filteredData.map(
+          (s) =>
+            `${s.Name} | ${s.className} | ${
+              s.section || extractSectionFromData(s)
+            } | ${s.examName}`,
+        ),
+      );
     });
 
     const chartMap = {};

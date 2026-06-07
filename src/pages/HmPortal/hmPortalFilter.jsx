@@ -13,7 +13,7 @@ const HMFilters = ({ allData = [], filters, setFilters }) => {
   // Helper to get section
   const extractSection = (d) => {
     if (d.section) return d.section;
-    const regNo = d["Reg.no"] || d.RegNo || d.regNo;
+    const regNo = d["Reg.no"] || d.RegNo || d.regNo || d["Reg No"] || d["Reg.No"] || d["Reg.no"];
     const m = String(regNo || "").match(/10([A-Z])/);
     return m ? m[1] : null;
   };

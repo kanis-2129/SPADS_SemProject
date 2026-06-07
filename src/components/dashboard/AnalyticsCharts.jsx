@@ -84,33 +84,9 @@ const AnalyticsCharts = ({
   const sortedBarData = sortDataBySubject(barData);
   const sortedAtRiskData = sortDataBySubject(atRiskData);
 
-  // Dynamic Student-wise Unique Counting to fix the Total Strength (15) Mismatch
   const cleanedPieData = useMemo(() => {
-    if (!barData || barData.length === 0) {
-      return [
-        { name: "Pass", value: 0 },
-        { name: "Fail", value: 0 }
-      ];
-    }
-
-    // 1. At-risk data-vil irundhu maximum failed count student segment-ah edukka
-    let failCount = 0;
-    if (atRiskData && atRiskData.length > 0) {
-      const maximumFailInSingleSubject = Math.max(...atRiskData.map(d => d.failedCount || 0), 0);
-      failCount = maximumFailInSingleSubject > 0 ? maximumFailInSingleSubject : 1; 
-    } else {
-      failCount = 1; // Fallback safeguard
-    }
-
-    // 2. Class dashboard total strength (15) padi distribution mapping
-    const TOTAL_STRENGTH = 15;
-    const passCount = Math.max(0, TOTAL_STRENGTH - failCount);
-
-    return [
-      { name: "Pass", value: passCount },
-      { name: "Fail", value: failCount }
-    ];
-  }, [barData, atRiskData]);
+  return pieData || [];
+}, [pieData]);
 
   const total = cleanedPieData.reduce((acc, curr) => acc + curr.value, 0);
   const passRate =

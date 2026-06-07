@@ -368,13 +368,17 @@ const TeacherDashboard = () => {
 
     setCharts({
       pie: [
-        { name: "Pass", value: overallPassPercentage },
-        { name: "Fail", value: 100 - overallPassPercentage },
+        { name: "Pass", value: passCount },
+        { name: "Fail", value: failCount },
       ],
       bar: barData,
       trend: trendData,
       atRisk: atRiskData,
     });
+    console.log("Processed Students:", processedStudents.length);
+    console.log("Student Averages:", studentAverages.length);
+    console.log("Pass Count:", passCount);
+    console.log("Fail Count:", failCount);
   }, [filters, allData]);
 
   if (loading)
@@ -455,17 +459,24 @@ const TeacherDashboard = () => {
                 <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest px-2 italic">
                   🏆 Top Performers
                 </p>
-                {stats.topPerformers.map((s, i) => (
-                  <div
-                    key={i}
-                    className="flex justify-between items-center p-4 bg-white shadow-sm border border-slate-100 rounded-2xl"
-                  >
-                    <span className="font-bold text-slate-700">{s.name}</span>
-                    <span className="text-emerald-600 font-black">
-                      {s.avg}%
-                    </span>
-                  </div>
-                ))}
+
+                {stats.topPerformers.length === 0 ? (
+                  <p className="p-4 text-slate-500 font-bold text-sm">
+                    No students scored 85% or above in the selected records.
+                  </p>
+                ) : (
+                  stats.topPerformers.map((s, i) => (
+                    <div
+                      key={i}
+                      className="flex justify-between items-center p-4 bg-white shadow-sm border border-slate-100 rounded-2xl"
+                    >
+                      <span className="font-bold text-slate-700">{s.name}</span>
+                      <span className="text-emerald-600 font-black">
+                        {s.avg}%
+                      </span>
+                    </div>
+                  ))
+                )}
               </div>
               <div className="space-y-3">
                 <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest px-2 italic">

@@ -35,7 +35,7 @@ const MarksheetModal = ({ data = [], onClose, title = "" }) => {
       });
     };
 
-    const orderTemplate = ["S.No", "Reg.No", "Name", "Tamil", "English", "Maths", "Science", "Social", "Total"];
+    const orderTemplate = ["S.No", "Reg.No", "Name", "Tamil", "English", "Maths", "Science", "Social Science", "Total"];
     const result = [];
     const usedKeys = new Set();
 
