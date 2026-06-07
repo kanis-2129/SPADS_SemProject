@@ -110,6 +110,10 @@ const TeacherDashboard = () => {
     avgMarks: 0,
     passPercentage: 0,
     focusNeeded: 0,
+
+    studentPassPercentage: 0,
+    studentFailCount: 0,
+
     topPerformers: [],
     lowPerformers: [],
   });
@@ -328,6 +332,7 @@ const TeacherDashboard = () => {
 
     setStats({
       totalStudents: totalStudentsInView,
+
       avgMarks:
         totalStudentsInView > 0
           ? Math.round(
@@ -335,20 +340,30 @@ const TeacherDashboard = () => {
                 totalStudentsInView,
             )
           : 0,
-      passPercentage:
+
+      // Subject-wise pass ratio
+      passPercentage: overallPassPercentage,
+
+      // Students having at least one fail
+      focusNeeded: totalFailStudents,
+
+      // Student-wise pass ratio
+      studentPassPercentage:
         totalStudentsInView > 0
           ? Math.round((passCount / totalStudentsInView) * 100)
           : 0,
-      focusNeeded: failCount,
+
+      // Total failed students
+      studentFailCount: failCount,
+
       topPerformers: studentAverages
         .filter((s) => s.avg >= 85)
         .sort((a, b) => b.avg - a.avg)
         .slice(0, 5),
+
       lowPerformers: studentAverages
         .filter((s) => s.isFail)
         .sort((a, b) => a.avg - b.avg),
-      passPercentage: overallPassPercentage,
-      focusNeeded: totalFailStudents,
     });
 
     setCharts({

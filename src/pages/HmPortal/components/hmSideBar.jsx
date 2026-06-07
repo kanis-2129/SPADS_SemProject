@@ -1,21 +1,15 @@
 import React from "react";
-import HMPersonal from "./hmPersonal";
-import HMSettings from "./hmSettings";
 import {
   X,
   LayoutDashboard,
-  BarChart3,
+  
   Users,
-  GraduationCap,
-  ClipboardList,
   User,
   Settings,
   LogOut,
   ShieldCheck,
   ChevronRight,
 } from "lucide-react";
-
-import { useNavigate } from "react-router-dom";
 
 // Sidebar Item Component
 const DrawerItem = ({ icon, label, onClick, active, badge }) => (
@@ -52,11 +46,6 @@ const HMSidebar = ({
   activePath,
   setActivePath,
 }) => {
-  const handleNavigation = (path) => {
-    setActivePath(path); // Active path-ஐ இங்கே மாற்றவும்
-    navigate(path);
-    setIsDrawerOpen(false);
-  };
   return (
     <>
       {/* --- OVERLAY --- */}

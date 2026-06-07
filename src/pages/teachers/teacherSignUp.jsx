@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { UserPlus, User, Mail, Building2, Lock, ArrowLeft, Users2, Eye, EyeOff, CheckCircle2 } from "lucide-react";
+import {  User, Mail,   ArrowLeft, Eye, EyeOff, CheckCircle2 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { auth, db } from "./firebase";
 import { doc, setDoc } from "firebase/firestore";

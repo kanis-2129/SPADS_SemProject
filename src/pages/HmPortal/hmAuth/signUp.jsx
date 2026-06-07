@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import {
-  UserPlus,
   User,
   Mail,
   Building2,

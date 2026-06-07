@@ -22,7 +22,6 @@ import HMLogin from "./pages/HmPortal/hmAuth/login";
 import HMPersonal from "./pages/HmPortal/components/hmPersonal";
 import HMSettings from "./pages/HmPortal/components/hmSettings";
 import HMStaffList from "./pages/HmPortal/components/HMStaffList";
-import HMLayout from "./pages/HmPortal/components/HMLayout";
 import HMStudentAtRiskDatabase from "./pages/HmPortal/components/studentAtRisk";
 
 // Admin Dashboard

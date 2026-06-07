@@ -3,7 +3,7 @@ import {
   X, User, ShieldCheck, Trash2, Info, LogOut, Save, Mail, Edit2, AtSign 
 } from "lucide-react";
 import { auth, db } from "./firebase";
-import { doc, getDoc, updateDoc } from "firebase/firestore";
+import { doc,  updateDoc } from "firebase/firestore";
 import { updateProfile, updateEmail, sendPasswordResetEmail, signOut } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 

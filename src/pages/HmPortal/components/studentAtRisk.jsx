@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect ,useCallback} from "react";
 import { collection, query, where, getDocs } from "firebase/firestore";
 import { db } from "../hmFirebse";
 import {
@@ -16,6 +16,8 @@ import {
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
+const subjects = ["Tamil", "English", "Maths", "Science", "Social"];
+
 const HMStudentRiskTracker = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
@@ -26,10 +28,7 @@ const HMStudentRiskTracker = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [students, setStudents] = useState([]);
   const [selectedStudent, setSelectedStudent] = useState(null);
-
-  const subjects = ["Tamil", "English", "Maths", "Science", "Social"];
-
-  const fetchRiskData = async () => {
+  const fetchRiskData = useCallback(async () => {
     setLoading(true);
     try {
       const q = query(
@@ -165,11 +164,11 @@ const HMStudentRiskTracker = () => {
       console.error("Fetch Error:", err);
     }
     setLoading(false);
-  };
+  }, [selectedClass, selectedSection, selectedExam]);
 
   useEffect(() => {
     fetchRiskData();
-  }, [selectedClass, selectedSection, selectedExam]);
+  }, [fetchRiskData]);
 
   const filteredStudents = students.filter(
     (s) =>

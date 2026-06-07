@@ -4,7 +4,7 @@ import { db, auth } from "./firebase";
 import AccountSettings from "../teachers/teacherAccountSetting";
 import {
   ArrowLeft, Plus, X, GraduationCap, LayoutGrid, Trash2, 
-  Settings, LogOut, Mail, Edit3, BookOpen, UserCheck, Calendar,
+  Settings, LogOut, Mail, Edit3, BookOpen, UserCheck, 
 } from "lucide-react";
 import {
   collection, addDoc, serverTimestamp, query, where, 
@@ -40,7 +40,7 @@ const TeacherWorkspace = () => {
       setClasses(data);
     });
     return () => unsubscribe();
-  }, [auth.currentUser]);
+  }, []);
 
   const handleTeacherExit = async () => {
     const user = auth.currentUser;

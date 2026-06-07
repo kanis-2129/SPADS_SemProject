@@ -4,7 +4,7 @@ import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { useNavigate } from "react-router-dom"; 
 import { 
   Mail, Phone, BadgeCheck, Shield, User, 
-  Hash, School, Calendar, ArrowLeft, X, Save
+  Hash, School,  ArrowLeft, X, Save
 } from "lucide-react";
 
 const HMProfile = () => {

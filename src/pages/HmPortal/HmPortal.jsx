@@ -6,7 +6,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import DashboardFilter from "../HmPortal/hmPortalFilter";
 import HMSidebar from "./components/hmSideBar";
 import {
-  SubjectPassFailChart,
+  
   ExamTrendChart,
   PassFailDonut,
    SchoolYearlyTrendChart,

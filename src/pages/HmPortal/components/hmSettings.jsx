@@ -5,7 +5,6 @@ import { doc, updateDoc } from "firebase/firestore";
 import {
   sendPasswordResetEmail,
   signOut,
-  updateEmail,
   reauthenticateWithCredential,
   EmailAuthProvider,
 } from "firebase/auth";
@@ -22,10 +21,10 @@ import {
   ShieldCheck,
   KeyRound,
   Fingerprint,
-  X,
+ 
   Mail,
   CheckCircle,
-  ShieldAlert,
+
   ChevronLeft,
   Loader2,
   ArrowRight,
@@ -34,7 +33,7 @@ import {
   History,
   Globe,
   ShieldQuestion,
-  UserCog,
+  
   ShieldEllipsis,
 } from "lucide-react";
 import { verifyBeforeUpdateEmail } from "firebase/auth";
@@ -51,7 +50,7 @@ const HMSettings = () => {
   const [newEmail, setNewEmail] = useState("");
   const [securityLogs, setSecurityLogs] = useState([]);
   const [isTFAEnabled, setIsTFAEnabled] = useState(false);
-  const [profile, setProfile] = useState(null);
+  const [, setProfile] = useState(null);
 
   // 1. Fetch Real-time Security Logs from Firestore
   useEffect(() => {

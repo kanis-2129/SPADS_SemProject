@@ -2,18 +2,16 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   X,
-  Sparkles,
+
   AlertCircle,
-  Target,
-  Loader2,
+ 
   BrainCircuit,
   TrendingDown,
   Zap,
   ChevronDown,
   ChevronRight,
   Trophy,
-  Database,
-  Target as TargetIcon,
+
   Award,
 } from "lucide-react";
 import { collection, query, where, getDocs } from "firebase/firestore";
