@@ -1,6 +1,6 @@
-import { School, Info } from "lucide-react";
+import { School,  } from "lucide-react";
 import sclImage from "../images/sclImage1.png";
-import SclFeatures from "./sclFeature";
+
 
 const About = (props) => {
   return (

@@ -1,5 +1,5 @@
-import React, { useState, useMemo } from "react";
-import { X, BookOpen, GraduationCap } from "lucide-react";
+import React, {  useMemo } from "react";
+import { X, GraduationCap } from "lucide-react";
 
 const MarksheetModal = ({ data = [], onClose, title = "" }) => {
   

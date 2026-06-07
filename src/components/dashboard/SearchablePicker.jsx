@@ -13,7 +13,6 @@ const SearchablePicker = ({ options, value, onSelect }) => {
       <div className="relative">
         <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
         <input 
-          type="text"
           placeholder="Type student name..."
           className="w-full pl-10 pr-4 py-3 bg-slate-50 border border-slate-100 rounded-xl text-sm font-bold outline-none focus:border-cyan-500 transition-all"
           value={searchTerm}
